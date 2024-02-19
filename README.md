@@ -23,7 +23,7 @@ https://www.kaggle.com/datasets/iarunava/cell-images-for-detecting-malaria?resou
 
 https://www.kaggle.com/datasets/ashishjangra27/gender-recognition-200k-images-celeba?resource=download
 
-##Installation
+## Installation
 
 ```bash
 git clone https://github.com/Julimaeder/Where-to-look.git
