@@ -4,8 +4,7 @@ DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
 print("DEVICE is", DEVICE)
 
 import os
-os.environ["KMP_DUPLICATE_LIB_OK"] = "TRUE" #!!! muss noch geändert werden
-
+# Bei Problemen mit dem Enviroment ggf. ausführen: os.environ["KMP_DUPLICATE_LIB_OK"] = "TRUE"
 from torchvision import transforms
 import numpy as np
 import matplotlib.pyplot as plt
@@ -130,7 +129,7 @@ def PredictMulti(Imagepath, end_or_every = 'End'):
     else:
         Pred = 'Infected'
         
-    if  end_or_every == 'End': #!!! gucken ob klappt
+    if  end_or_every == 'End':
         loss_text = 'Last layer loss'
     else:
         loss_text = 'Every layer loss'
@@ -170,7 +169,7 @@ def PredictGender100Heatmaps(Imagepath):
     image = image.to('cuda')
     
     model = Network().to('cuda')
-    model.load_state_dict(torch.load('Where-to-look_models\\model_gender_last.pt')['net_state_dict']) #!!! gucken, ob der name stimmt
+    model.load_state_dict(torch.load('Where-to-look_models\\model_gender_last.pt')['net_state_dict'])
 
     model.eval()
     
@@ -367,7 +366,7 @@ def Main():
             else: #Wenn der Nutzer die Demo Bilder verwenden möchte
                 # Filenames der nicht zum Training verwendeten Bilder werden aus der JSON Datei ausgelesen
                 Malaria_dataset_path = input('Path to Malaria Dataset (...\\Malaria_Cell_Images) \n-->')
-                with open('Data\\malaria_testing_filenames_last.json', 'r') as file:    #!!! filenames ändern von single/ multi zu last/every
+                with open('Data\\malaria_testing_filenames_last.json', 'r') as file:
                     loaded_data = json.load(file)
 
                 InfectedFilenames = list(loaded_data['InfectedFilenames'])
@@ -390,7 +389,7 @@ def Main():
                 else: #Wenn der Nutzer die Demo Bilder verwenden möchte
                     # Filenames der nicht zum Training verwendeten Bilder werden aus der JSON Datei ausgelesen
                     Malaria_dataset_path = input('Path to Malaria Dataset (...\\Malaria_Cell_Images) \n-->')
-                    with open('Data\\malaria_testing_filenames_every.json', 'r') as file: #!!! filenames chekcen
+                    with open('Data\\malaria_testing_filenames_every.json', 'r') as file:
                         loaded_data = json.load(file)
 
                     InfectedFilenames = list(loaded_data['InfectedFilenames'])
@@ -409,7 +408,7 @@ def Main():
                 else: #Wenn der Nutzer die Demo Bilder verwenden möchte
                     # Filenames der nicht zum Training verwendeten Bilder werden aus der JSON Datei ausgelesen
                     Malaria_dataset_path = input('Path to Malaria Dataset (...\\Malaria_Cell_Images) \n-->')
-                    with open('Data\\malaria_testing_filenames_every_every.json', 'r') as file:  #!!! filenames chekcen
+                    with open('Data\\malaria_testing_filenames_every_every.json', 'r') as file:  
                         loaded_data = json.load(file)
 
                     InfectedFilenames = list(loaded_data['InfectedFilenames'])
@@ -433,7 +432,7 @@ def Main():
             if user_input_demo_or_own == 'A':
                 OverlayMaleFemale(input('Path to Male100 plot \n-->'), input('Path to Female100 plot \n-->'))
             else:
-                OverlayMaleFemale('Data\Figure_Gender100_male.png','Data\Figure_Gender100_female.png') #!!! Path zu bildern auf Github
+                OverlayMaleFemale('Data\Figure_Gender100_male.png','Data\Figure_Gender100_female.png') 
                 
 if __name__ == "__main__":
     Main()

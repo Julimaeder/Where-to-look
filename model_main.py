@@ -4,9 +4,7 @@ DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
 print("DEVICE is", DEVICE)
 
 import os
-os.environ["KMP_DUPLICATE_LIB_OK"] = "TRUE" #!!!muss noch geändert werden
-
-
+# Bei Problemen mit dem Enviroment ggf. ausführen: os.environ["KMP_DUPLICATE_LIB_OK"] = "TRUE"
 
 if __name__ == "__main__":
     
