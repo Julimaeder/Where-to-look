@@ -31,6 +31,8 @@ cd Where-to-look
 pip install -r requirements.txt
 ```
 
+Für die Ausführung des Codes wird Cuda benötigt. Bitte vorher überprüfen, ob die installierte Version mit der pytorch Version kompatibel ist.
+
 Zum trainieren der Modelle anschließend 
 ```bash
 python model_main.py
